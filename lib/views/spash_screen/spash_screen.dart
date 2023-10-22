@@ -1,8 +1,10 @@
 //if logged in then.showing homescreen otherwise showing login and signup screen
 import 'package:ecom_app_ddbahinicreation/constts/colors.dart';
 import 'package:ecom_app_ddbahinicreation/constts/consts.dart';
+import 'package:ecom_app_ddbahinicreation/views/auth_screen/login_screen.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/applogo_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,6 +14,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  //Creating method for changing the screen
+  changeScreen() {
+    Future.delayed(const Duration(seconds: 3), () {
+      //Using GetX
+      Get.to(() => const LoginScreen());
+    });
+  }
+
+  @override
+  void initState() {
+    changeScreen();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
