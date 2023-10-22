@@ -15,3 +15,4 @@ const createNewAccount = "or, create a new account";
 const loginWith = "Log in with";
 const privacyPolicy = "Privacy Policy";
 const termsAndCond = "Terms & Conditions";
+const alreadyHaveAccount = "Already have an account? ";

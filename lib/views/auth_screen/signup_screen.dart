@@ -4,6 +4,7 @@ import 'package:ecom_app_ddbahinicreation/widgets_common/bg_widget.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/custom_textfield.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -26,11 +27,36 @@ class SignUpScreen extends StatelessWidget {
               customTextField(email, emailHint),
               customTextField(password, passwordHint),
               customTextField(reTypePassword, passwordHint),
-               Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: () {}, child: forgetPass.text.make())),
-            
+              5.heightBox,
+              Row(
+                children: [
+                  Checkbox(value: false, onChanged: (newValue) {}),
+                  10.widthBox,
+                  Expanded(
+                    child: RichText(
+                      text: TextSpan(children: [
+                        TextSpan(
+                            text: "I agree to the ",
+                            style: TextStyle(
+                              fontFamily: bold,
+                              color: fontGrey,
+                            )),
+                        TextSpan(
+                            text: termsAndCond,
+                            style:
+                                TextStyle(fontFamily: bold, color: redColor)),
+                        TextSpan(
+                            text: " & ",
+                            style:
+                                TextStyle(fontFamily: bold, color: fontGrey)),
+                        TextSpan(
+                            text: privacyPolicy,
+                            style: TextStyle(fontFamily: bold, color: redColor))
+                      ]),
+                    ),
+                  ),
+                ],
+              ),
               5.heightBox,
               ourButton(
                       color: redColor,
@@ -40,25 +66,21 @@ class SignUpScreen extends StatelessWidget {
                   .box
                   .width(context.screenWidth - 50)
                   .make(),
-              Row(
-                children: [
-                  Checkbox(value: false, onChanged: (newValue){}),
-                  10.widthBox,
-                  RichText(text: TextSpan(children: [
-                    TextSpan(text: "I agree to the", style: TextStyle(
-                      fontFamily: bold,
-                      color: fontGrey,
-                    )),
-                    TextSpan(text: termsAndCond, style: TextStyle(fontFamily: bold, color: redColor)),
-                    TextSpan(text: "&", style: TextStyle(fontFamily: bold, color: fontGrey)),
-                    TextSpan(text: privacyPolicy, style: TextStyle(fontFamily: bold, color: redColor))
-                    
-                  ]),)
+              10.heightBox,
 
-                ],
-              )
-             
-    
+              //Wrap this richtext - into gesture detector of Velocity X
+              RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text: alreadyHaveAccount,
+                    style: TextStyle(fontFamily: bold, color: fontGrey)),
+                TextSpan(
+                    text: login,
+                    style: TextStyle(fontFamily: bold, color: redColor))
+              ])).onTap(() {
+                //we have already gone through login to signup so to move on login again ..we have to go back
+                Get.back();
+              })
             ],
           )
               .box
