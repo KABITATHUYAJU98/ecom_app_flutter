@@ -30,4 +30,24 @@ const searchAnything = "Search Anything...",
     topSellers = "Top Sellers",
     brand = "Brand",
     topCategories = "Top Categories",
-    featureCategories = "Feature Categories";
+
+    womenDress = "Women Dress",
+    womenWatches = "Women Watches",
+    mobilePhone = "Mobile Phone",
+    boysGlasses = "Boys Glasses",
+    tShirts = "TShirts",
+    girlsDress = "Girls Dresses",
+    featureCategories = "Feature Categories",
+    featureProducts = "Feature Products";
+
+
+// strings for category Screen
+const womenClothing = "Women Clothing",
+    compAccessories = "Computer & Accessories",
+    autoMobile = "Automobile",
+    kidToys = "KidToys",
+    sports = "Sports",
+    jewellery = "Jewelery",
+    cellPhone = "CellPhone & Tab",
+    furniture = "Furniture",
+    menClothingFashion = "Men Clothing & Fashion";
