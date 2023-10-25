@@ -6,8 +6,16 @@ import 'package:ecom_app_ddbahinicreation/widgets_common/our_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUpScreen extends StatelessWidget {
+// we have to change this screen to stateful for checkbox
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  bool? isCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +38,13 @@ class SignUpScreen extends StatelessWidget {
               5.heightBox,
               Row(
                 children: [
-                  Checkbox(value: false, onChanged: (newValue) {}),
+                  Checkbox(
+                      value: isCheck,
+                      onChanged: (newValue) {
+                        setState(() {
+                          isCheck = newValue;
+                        });
+                      }),
                   10.widthBox,
                   Expanded(
                     child: RichText(
@@ -38,20 +52,21 @@ class SignUpScreen extends StatelessWidget {
                         TextSpan(
                             text: "I agree to the ",
                             style: TextStyle(
-                              fontFamily: bold,
+                              fontFamily: regular,
                               color: fontGrey,
                             )),
                         TextSpan(
                             text: termsAndCond,
-                            style:
-                                TextStyle(fontFamily: bold, color: redColor)),
+                            style: TextStyle(
+                                fontFamily: regular, color: redColor)),
                         TextSpan(
                             text: " & ",
-                            style:
-                                TextStyle(fontFamily: bold, color: fontGrey)),
+                            style: TextStyle(
+                                fontFamily: regular, color: fontGrey)),
                         TextSpan(
                             text: privacyPolicy,
-                            style: TextStyle(fontFamily: bold, color: redColor))
+                            style:
+                                TextStyle(fontFamily: regular, color: redColor))
                       ]),
                     ),
                   ),
@@ -59,7 +74,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               5.heightBox,
               ourButton(
-                      color: redColor,
+                      color: isCheck == true ? redColor : lightGrey,
                       title: signup,
                       textColor: whiteColor,
                       onPress: () {})
@@ -68,19 +83,28 @@ class SignUpScreen extends StatelessWidget {
                   .make(),
               10.heightBox,
 
-              //Wrap this richtext - into gesture detector of Velocity X
-              RichText(
-                  text: TextSpan(children: [
-                TextSpan(
-                    text: alreadyHaveAccount,
-                    style: TextStyle(fontFamily: bold, color: fontGrey)),
-                TextSpan(
-                    text: login,
-                    style: TextStyle(fontFamily: bold, color: redColor))
-              ])).onTap(() {
-                //we have already gone through login to signup so to move on login again ..we have to go back
-                Get.back();
-              })
+              // //Wrap this richtext - into gesture detector of Velocity X
+              // RichText(
+              //     text: TextSpan(children: [
+              //   TextSpan(
+              //       text: alreadyHaveAccount,
+              //       style: TextStyle(fontFamily: bold, color: fontGrey)),
+              //   TextSpan(
+              //       text: login,
+              //       style: TextStyle(fontFamily: bold, color: redColor))
+              // ])).onTap(() {
+              //   //we have already gone through login to signup so to move on login again ..we have to go back
+              //   Get.back();
+              // })
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  alreadyHaveAccount.text.color(fontGrey).make(),
+                  login.text.color(redColor).make().onTap(() {
+                    Get.back();
+                  })
+                ],
+              )
             ],
           )
               .box
