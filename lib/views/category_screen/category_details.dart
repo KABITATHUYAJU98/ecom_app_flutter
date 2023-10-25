@@ -1,8 +1,10 @@
+import 'package:ecom_app_ddbahinicreation/views/category_screen/item_details.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/bg_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ecom_app_ddbahinicreation/constts/consts.dart';
+import 'package:get/get.dart';
 
 class CategoryDetails extends StatelessWidget {
   final String? title;
@@ -82,7 +84,12 @@ class CategoryDetails extends StatelessWidget {
                         .roundedSM
                         .outerShadowSm
                         .padding(const EdgeInsets.all(12))
-                        .make();
+                        .make()
+                        .onTap(() {
+                      Get.to(() => const ItemDetails(
+                            title: 'Dummy Item',
+                          ));
+                    });
                   }))
         ]),
       ),
