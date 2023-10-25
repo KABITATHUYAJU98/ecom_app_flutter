@@ -17,8 +17,17 @@ const privacyPolicy = "Privacy Policy";
 const termsAndCond = "Terms & Conditions";
 const alreadyHaveAccount = "Already have an account? ";
 
-//Strings used for home screen
+//Strings used for Home
 const home = "Home",
     categories = "Categories",
     cart = "Cart",
     account = "Account";
+
+//Strings for HomeScreen
+const searchAnything = "Search Anything...",
+    todayDeal = "Today's Deal",
+    flashSale = "Flash Sale",
+    topSellers = "Top Sellers",
+    brand = "Brand",
+    topCategories = "Top Categories",
+    featureCategories = "Feature Categories";

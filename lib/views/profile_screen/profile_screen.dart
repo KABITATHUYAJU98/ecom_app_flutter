@@ -1,0 +1,14 @@
+import 'package:ecom_app_ddbahinicreation/constts/consts.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.red,
+    );
+  }
+}

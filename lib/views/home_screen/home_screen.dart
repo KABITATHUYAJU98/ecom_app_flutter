@@ -1,80 +1,128 @@
 import 'package:ecom_app_ddbahinicreation/constts/consts.dart';
-import 'package:ecom_app_ddbahinicreation/constts/images.dart';
-import 'package:ecom_app_ddbahinicreation/controller/home_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:ecom_app_ddbahinicreation/constts/list.dart';
+import 'package:ecom_app_ddbahinicreation/widgets_common/home_buttons.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    //init home controller
-    var controller = Get.put(HomeController());
+    return Container(
+      padding: const EdgeInsets.all(12),
+      color: lightGrey,
+      width: context.screenWidth,
+      height: context.screenHeight,
+      child: SafeArea(
+          child: Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: 60,
+            color: lightGrey,
+            child: TextFormField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                suffixIcon: Icon(Icons.search),
+                filled: true,
+                fillColor: whiteColor,
+                hintText: searchAnything,
+                hintStyle: TextStyle(color: textfieldGrey),
+              ),
+            ),
+          ),
+          5.heightBox,
+          Expanded(
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  //Creating swappers for brand | also create list for brands
+                  VxSwiper.builder(
+                      //to remove the unnecessary spaces here..
+                      aspectRatio: 16 / 9,
+                      autoPlay: true,
+                      height: 110,
+                      enlargeCenterPage: true,
+                      itemCount: brandsSliderList.length,
+                      itemBuilder: (context, index) {
+                        return Image.asset(brandsSliderList[index],
+                                fit: BoxFit.fitWidth)
+                            .box
+                            .rounded
+                            .clip(Clip.antiAlias)
+                            .margin(EdgeInsets.symmetric(horizontal: 8))
+                            .make();
+                      }),
+                  10.heightBox,
 
-    var navbarItem = [
-      BottomNavigationBarItem(
-          icon: Image.asset(
-            icHome,
-            width: 26,
-          ),
-          label: home),
-      BottomNavigationBarItem(
-          icon: Image.asset(
-            icCategories,
-            width: 26,
-          ),
-          label: categories),
-      BottomNavigationBarItem(
-          icon: Image.asset(
-            icCart,
-            width: 26,
-          ),
-          label: cart),
-      BottomNavigationBarItem(
-          icon: Image.asset(
-            icProfile,
-            width: 26,
-          ),
-          label: account),
-    ];
+                  //showing deals buttons
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                          2,
+                          (index) => homeButtons(
+                                width: context.screenWidth / 2.5,
+                                height: context.screenHeight * 0.15,
+                                icon: index == 0 ? icTodaysDeal : icFlashDeal,
+                                title: index == 0 ? todayDeal : flashSale,
+                              ))),
+                  10.heightBox,
 
-    //to show the body according to the nav
-    var navBody = [
-      Container(
-        color: Colors.blue,
-      ),
-      Container(
-        color: Colors.amber,
-      ),
-      Container(
-        color: Colors.purple,
-      ),
-      Container(
-        color: Colors.cyan,
-      )
-    ];
+                  //2nd Swippers for homescreen
+                  VxSwiper.builder(
+                      aspectRatio: 16 / 9,
+                      autoPlay: true,
+                      height: 110,
+                      enlargeCenterPage: true,
+                      itemCount: secondSliderList.length,
+                      itemBuilder: (context, index) {
+                        return Image.asset(secondSliderList[index],
+                                fit: BoxFit.fitWidth)
+                            .box
+                            .rounded
+                            .clip(Clip.antiAlias)
+                            .margin(EdgeInsets.symmetric(horizontal: 8))
+                            .make();
+                      }),
 
-    return Scaffold(
-        body: Column(
-          children: [
-            //wrap with obx to show the dynamic change of screen
-            Obx(() => Expanded(child: navBody.elementAt(controller.currentNavIndex.value)))
-          ],
-        ),
-        bottomNavigationBar: Obx(
-          () => BottomNavigationBar(
-            currentIndex: controller.currentNavIndex.value,
-            type: BottomNavigationBarType.fixed,
-            selectedLabelStyle: TextStyle(fontFamily: semibold),
-            selectedItemColor: redColor,
-            backgroundColor: whiteColor,
-            items: navbarItem,
-            onTap: (value) {
-              //value will be current value of nav index
-              controller.currentNavIndex.value = value;
-            },
-          ),
-        ));
+                  10.heightBox,
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                          3,
+                          (index) => homeButtons(
+                                height: context.screenHeight * 0.15,
+                                width: context.screenWidth / 3.5,
+                                icon: index == 0
+                                    ? icTopCategories
+                                    : index == 1
+                                        ? icBrands
+                                        : icTopSeller,
+                                title: index == 0
+                                    ? topCategories
+                                    : index == 1
+                                        ? brand
+                                        : topSellers,
+                              ))),
+
+                  //Feature Categories  in home screen
+                  10.heightBox,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: featureCategories.text
+                        .color(darkFontGrey)
+                        .size(17)
+                        .fontFamily(semibold)
+                        .make(),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      )),
+    );
   }
 }
