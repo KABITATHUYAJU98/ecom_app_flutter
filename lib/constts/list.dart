@@ -19,10 +19,22 @@ const categoriesList = [
   womenDress,
   menClothingFashion,
   compAccessories,
-  kidToys,
   autoMobile,
+  kidToys,
   sports,
   jewellery,
   cellPhone,
   furniture
+];
+
+const categoryImages = [
+  imgFc1,
+  imgFc2,
+  imgFc3,
+  imgFc4,
+  imgFc5,
+  imgFc6,
+  imgFc7,
+  imgFc8,
+  imgFc9
 ];
