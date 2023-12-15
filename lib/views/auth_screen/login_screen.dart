@@ -1,12 +1,10 @@
 import 'package:ecom_app_ddbahinicreation/constts/consts.dart';
-import 'package:ecom_app_ddbahinicreation/constts/list.dart';
 import 'package:ecom_app_ddbahinicreation/views/auth_screen/signup_screen.dart';
 import 'package:ecom_app_ddbahinicreation/views/home_screen/home.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/applogo_widget.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/bg_widget.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/custom_textfield.dart';
 import 'package:ecom_app_ddbahinicreation/widgets_common/our_button.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
